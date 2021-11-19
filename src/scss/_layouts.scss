@@ -30,6 +30,7 @@
   & > picture {
     grid-area: image;
     max-width: 60%;
+    align-self: start;
   }
 
   & > .tab-list {
@@ -76,6 +77,34 @@
   }
 }
 
+/* technology layout */
+
+.grid-container--technology {
+  --gap: 2rem;
+  grid-template-areas:
+    "title"
+    "image"
+    "tabs"
+    "content";
+
+  & > picture {
+    grid-area: image;
+    max-width: 60%;
+    border-bottom: 1px solid hsl(var(--clr-white) / 0.1);
+  }
+
+  & > .number-indicators {
+    grid-area: tabs;
+  }
+
+  & > .technology-details {
+    grid-area: content;
+    & h2 {
+      opacity: 0.5;
+    }
+  }
+}
+
 @media (min-width: 35em) {
   .numbered-title {
     justify-self: start;
@@ -92,6 +121,15 @@
   }
 
   .grid-container--crew {
+    padding-bottom: 0;
+    grid-template-areas:
+      "title"
+      "content"
+      "tabs"
+      "image";
+  }
+
+  .grid-container--technology {
     padding-bottom: 0;
     grid-template-areas:
       "title"
@@ -141,20 +179,46 @@
   }
 
   .grid-container--crew {
+    grid-template-columns: minmax(1rem, 1fr) minmax(0, 37rem) minmax(0, 23rem) minmax(
+        1rem,
+        1fr
+      );
+    justify-items: start;
     grid-template-areas:
       ". title title ."
       ". content image ."
       ". tabs image .";
     & > picture {
+      grid-column: span 2;
+      align-self: end;
       max-width: 90%;
     }
 
     & > .dot-indicators {
       justify-self: start;
     }
+  }
+
+  .grid-container--technology {
+    padding: 0 clamp(1.5rem, 5vw, 3.5rem);
+    grid-template-columns: minmax(5rem, 1fr) minmax(0, 37rem) minmax(0, 23rem) minmax(
+        1rem,
+        1fr
+      );
+    justify-items: start;
+    grid-template-areas:
+      ". title title ."
+      "tabs content image image"
+      ". . . .";
+
+    & > .number-indicators {
+      flex-direction: column;
+      justify-self: center;
+    }
 
     & > picture {
-      align-self: end;
+      grid-column: 3 / -1;
+      max-width: 100%;
     }
   }
 }
