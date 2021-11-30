@@ -16,8 +16,5 @@
 .prettierignore
 node_modules
 starter-code
-preview.jpg
-README-template.md
-README.md
 dist
 .cache
